@@ -22,7 +22,7 @@ const VerticalPixelTransition = ({ menuIsActive }) => {
 
   const shuffle = (a) => {
     var j, x, i;
-    for (i = a.length - 1; i > 0; i--) {
+    for (i = a?.length - 1; i > 0; i--) {
       j = Math.floor(Math.random() * (i + 1));
       x = a[i];
       a[i] = a[j];
@@ -43,7 +43,7 @@ const VerticalPixelTransition = ({ menuIsActive }) => {
         variants={anim}
         initial="initial"
         animate={menuIsActive ? "open" : "closed"}
-        custom={[indexOfColum + randomIndex, 20 - indexOfColum + randomIndex]}
+        custom={[indexOfColum + randomIndex, 10 - indexOfColum + randomIndex]}
       />
     ));
   };
