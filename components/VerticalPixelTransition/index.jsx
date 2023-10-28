@@ -32,7 +32,7 @@ const VerticalPixelTransition = ({ menuIsActive }) => {
   };
 
   const getBlocks = (indexOfColum) => {
-    const { innerHeight, innerWidth } = window;
+    const { innerHeight, innerWidth } = typeof window !== "undefined" && window;
     const blockSize = innerHeight * 0.1;
     const nbOfBlocks = Math.ceil(innerWidth / blockSize);
     const shuffledIndexes = shuffle([...Array(nbOfBlocks)]).map((_, i) => i);
@@ -43,7 +43,7 @@ const VerticalPixelTransition = ({ menuIsActive }) => {
         variants={anim}
         initial="initial"
         animate={menuIsActive ? "open" : "closed"}
-        custom={[indexOfColum + randomIndex, (20 - indexOfColum + randomIndex)]}
+        custom={[indexOfColum + randomIndex, 20 - indexOfColum + randomIndex]}
       />
     ));
   };
