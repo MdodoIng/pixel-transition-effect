@@ -35,17 +35,21 @@ const VerticalPixelTransition = ({ menuIsActive }) => {
     const { innerHeight, innerWidth } = typeof window !== "undefined" && window;
     const blockSize = innerHeight * 0.1;
     const nbOfBlocks = Math.ceil(innerWidth / blockSize);
-    const shuffledIndexes = shuffle([...Array(nbOfBlocks)]).map((_, i) => i);
-    return shuffledIndexes.map((randomIndex, index) => (
-      <motion.div
-        key={index}
-        className="w-[10vh] h-full bg-[#ff6a00]"
-        variants={anim}
-        initial="initial"
-        animate={menuIsActive ? "open" : "closed"}
-        custom={[indexOfColum + randomIndex, 10 - indexOfColum + randomIndex]}
-      />
-    ));
+    const shuffledIndexes =
+      nbOfBlocks && shuffle([...Array(nbOfBlocks)]).map((_, i) => i);
+    return (
+      shuffledIndexes &&
+      shuffledIndexes.map((randomIndex, index) => (
+        <motion.div
+          key={index}
+          className="w-[10vh] h-full bg-[#ff6a00]"
+          variants={anim}
+          initial="initial"
+          animate={menuIsActive ? "open" : "closed"}
+          custom={[indexOfColum + randomIndex, 10 - indexOfColum + randomIndex]}
+        />
+      ))
+    );
   };
 
   return (
